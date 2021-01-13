@@ -1928,7 +1928,12 @@ export default function (Sequelize, DataTypes) {
         };
 
         // Record application
-        promises.push(models.HostApplication.recordApplication(hostCollective, this, { message: options?.message }));
+        promises.push(
+          models.HostApplication.recordApplication(hostCollective, this, {
+            message: options?.message,
+            customData: options?.applicationData,
+          }),
+        );
 
         if (!options?.skipCollectiveApplyActivity) {
           promises.push(
